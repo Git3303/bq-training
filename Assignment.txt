@@ -1,0 +1,41 @@
+#! /bin/bash
+
+# Creating a file named linux.txt
+touch linux.txt
+
+#Enter Contents 
+echo "Welcome to the Linux World" > linux.txt
+
+#Printing current Permissions
+ls -l | awk '/linux/ {print $1}'
+
+#Modifying Permissions
+chmod 600 linux.txt
+
+#Rename file
+mv linux.txt linuxworld.txt
+
+#Print Permissions
+ls -l | awk '/linuxworld/ {print $1}'
+
+#Switching root
+sudo su <<EOF
+brew update
+brew install apache2
+sudo apachectl start
+EOF
+
+#AS NORMAL USER
+#sudo chown $USER /opt/homebrew/bin/brew #Transfer ownership to local user
+#brew update
+#brew install apache2
+#echo betaque@123 | sudo -S apachectl start
+
+#Print current user
+whoami
+
+#Curl to apache using loopback address and print its output
+curl http://127.0.0.1:8080
+
+#Making sure apache runnning after reboot
+brew services start httpd
