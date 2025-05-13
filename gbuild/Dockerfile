@@ -1,11 +1,12 @@
+
 # Use the official Node.js image from Docker Hub
-FROM node:14
+FROM node:18
 
 # Set the working directory inside the container
 WORKDIR /app
 
 # Copy the package.json and package-lock.json files
-COPY package*.json ./
+COPY package.json ./
 
 # Install the app dependencies
 RUN npm install
